@@ -3,11 +3,25 @@ const app = express();
 const { createServer } = require("http");
 const { join } = require("path");
 const expressServer = createServer(app);
+const { Server } = require("socket.io");
 const port = process.env.PORT || 5000;
+
+const io = new Server(expressServer);
+
 
 
 app.get('/', (req, res) => {
     res.sendFile(join(__dirname, 'index.html'))
+})
+
+
+io.on('connection', (socket) => {
+    console.log("A user connected; ", socket.id)
+
+
+    socket.on('disconnect', () => {
+        console.log("User disconnected")
+    })
 })
 
 
