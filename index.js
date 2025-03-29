@@ -18,6 +18,15 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
     console.log("A user connected; ", socket.id)
 
+    // setTimeout(()=> {
+    //     socket.send("This is Barry Allen")
+    // }, 5000)
+
+    setInterval(() => {
+        const time = new Date().getTime();
+        socket.send(time)
+    }, 100)
+
 
     socket.on('disconnect', () => {
         console.log("User disconnected")
