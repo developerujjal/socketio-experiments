@@ -22,10 +22,25 @@ io.on('connection', (socket) => {
     //     socket.send("This is Barry Allen")
     // }, 5000)
 
-    setInterval(() => {
-        const time = new Date().getTime();
-        socket.send(time)
-    }, 100)
+
+    // setInterval(() => {
+    //     const time = new Date().getTime();
+    //     socket.send(time)
+    // }, 100)
+
+    // setTimeout(() => {
+    //     socket.emit("SendData", "We are the Best")
+    // }, 2000)
+
+    
+    // socket.on("message", (value) => {
+    //     console.log(value)
+    // })
+
+
+    socket.on("textValue", (value) => {
+        console.log(value)
+    })
 
 
     socket.on('disconnect', () => {

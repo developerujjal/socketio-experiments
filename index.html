@@ -6,16 +6,25 @@
     <title>Learning Socket.io</title>
   </head>
   <body>
-    <h1 id="time"></h1>
+    <input id="getText" type="text">
+    <button onclick={send()}>Send</button>
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
-        const socket = io();
+      //   const socket = io();
        
-        socket.on("message", (time) => {
-            document.getElementById('time').innerHTML = '';
-            document.getElementById('time').innerHTML = time;
-        })
+      // socket.on("SendData", (myTest) => {
+      //   document.getElementById('time').innerHTML= myTest
+      // })
+
+      const socket = io();
+      const send = () => {
+        const getValue = document.getElementById('getText').value;
+        // socket.send(getValue)
+        socket.emit("textValue", getValue)
+      }
+
+
     </script>
   </body>
 </html>
